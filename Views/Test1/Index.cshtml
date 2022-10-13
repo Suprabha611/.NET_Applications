@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebApplication2.Models.Test1>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> User Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
+            <td>
+                 <a asp-action="Edit" asp-route-id="@item.Id" class="text-warning"><i class="fa-solid fa-pen-to-square"></i></a> &ensp;
+                 <a asp-action="Details" asp-route-id="@item.Id" class="text-info"><i class="fa-solid fa-circle-info"></i></a> &ensp;
+                 <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="fa-solid fa-circle-minus"></i></a>&ensp;
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
